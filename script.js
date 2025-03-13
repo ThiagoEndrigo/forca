@@ -1,3 +1,7 @@
+const setupSection = document.getElementById('setup');
+const gameSection = document.getElementById('game');
+const secretWordInput = document.getElementById('secret-word-input');
+const startButton = document.getElementById('start-button');
 const wordDisplay = document.getElementById('word-display');
 const attemptsDisplay = document.getElementById('attempts');
 const incorrectLettersDisplay = document.getElementById('incorrect-letters');
@@ -10,7 +14,7 @@ const hangmanArt = document.getElementById('hangman-art');
 
 let secretWord = '';
 let guessedWord = [];
-let attempts = 6; // Número fixo de tentativas
+let attempts = 6;
 let guessedLetters = [];
 let incorrectLetters = [];
 let score = 0;
@@ -82,15 +86,19 @@ const hangmanStages = [
     `
 ];
 
-// Função para inicializar o jogo
-function initGame() {
-    secretWord = prompt("Digite a palavra secreta:").toUpperCase();
+// Função para iniciar o jogo
+function startGame() {
+    secretWord = secretWordInput.value.toUpperCase();
     if (!secretWord) {
         alert("Por favor, insira uma palavra válida.");
-        initGame();
         return;
     }
 
+    // Oculta a seção de setup e exibe a seção do jogo
+    setupSection.style.display = 'none';
+    gameSection.style.display = 'block';
+
+    // Inicializa o jogo
     guessedWord = Array(secretWord.length).fill('_');
     guessedLetters = [];
     incorrectLetters = [];
@@ -103,7 +111,7 @@ function updateDisplay() {
     attemptsDisplay.textContent = `Tentativas restantes: ${attempts}`;
     incorrectLettersDisplay.textContent = `Letras incorretas: ${incorrectLetters.join(', ')}`;
     scoreDisplay.textContent = `Pontuação: ${score}`;
-    hangmanArt.textContent = hangmanStages[6 - attempts]; // Atualiza o desenho da forca
+    hangmanArt.textContent = hangmanStages[6 - attempts];
 }
 
 // Verifica a letra digitada
@@ -134,11 +142,11 @@ function checkGuess() {
     updateDisplay();
 
     if (guessedWord.join('') === secretWord) {
-        score += attempts * 10; // Pontuação baseada nas tentativas restantes
-        messageDisplay.textContent = `Parabéns! Você venceu!`;
+        score += attempts * 10;
+        messageDisplay.textContent = `Parabéns! Você venceu! Pontuação: ${score}`;
         endGame();
     } else if (attempts === 0) {
-        messageDisplay.textContent = `Você Perdeu! A palavra era "${secretWord}".`;
+        messageDisplay.textContent = `Game over! A palavra era "${secretWord}".`;
         endGame();
     }
 }
@@ -170,6 +178,7 @@ function endGame() {
 }
 
 // Event listeners
+startButton.addEventListener('click', startGame);
 guessButton.addEventListener('click', checkGuess);
 hintButton.addEventListener('click', giveHint);
 guessInput.addEventListener('keypress', (e) => {
@@ -177,6 +186,3 @@ guessInput.addEventListener('keypress', (e) => {
         checkGuess();
     }
 });
-
-// Inicializa o jogo
-initGame();

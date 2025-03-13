@@ -24,6 +24,38 @@ h1 {
     margin-bottom: 20px;
 }
 
+#setup {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#secret-word-input {
+    padding: 10px;
+    font-size: 1em;
+    width: 200px;
+    text-align: center;
+    border: 2px solid #bdc3c7; /* Cinza claro */
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #ecf0f1; /* Fundo cinza claro */
+    color: #2c3e50; /* Azul escuro */
+}
+
+#start-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #3498db; /* Azul claro */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+
+#start-button:hover {
+    background-color: #2980b9; /* Azul mais escuro ao passar o mouse */
+}
+
 #hangman-drawing {
     font-family: monospace; /* Fonte de largura fixa para o desenho */
     font-size: 1.2em;
