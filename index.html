@@ -10,16 +10,20 @@
     <div class="container">
         <h1>Jogo da Forca</h1>
         <div id="hangman-drawing">
-            <!-- Desenho da forca e boneco -->
             <pre id="hangman-art"></pre>
         </div>
         <div id="word-display"></div>
         <div id="incorrect-letters"></div>
         <div id="attempts"></div>
+        <div id="score">Pontuação: 0</div>
         <input type="text" id="guess-input" maxlength="1" placeholder="Digite uma letra">
         <button id="guess-button">Tentar</button>
+        <button id="hint-button">Dica</button>
         <div id="message"></div>
     </div>
+    <footer>
+        Desenvolvido por <span class="developer-name">Endrigo Araújo</span>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
