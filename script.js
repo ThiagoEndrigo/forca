@@ -110,7 +110,7 @@ function updateDisplay() {
     wordDisplay.textContent = guessedWord.join(' ');
     attemptsDisplay.textContent = `Tentativas restantes: ${attempts}`;
     incorrectLettersDisplay.textContent = `Letras incorretas: ${incorrectLetters.join(', ')}`;
-    scoreDisplay.textContent = `Pontuação: ${score}`;
+    
     hangmanArt.textContent = hangmanStages[6 - attempts];
 }
 
@@ -143,10 +143,10 @@ function checkGuess() {
 
     if (guessedWord.join('') === secretWord) {
         score += attempts * 10;
-        messageDisplay.textContent = `Parabéns! Você venceu! Pontuação: ${score}`;
+        messageDisplay.textContent = `Parabéns! Você venceu!`;
         endGame();
     } else if (attempts === 0) {
-        messageDisplay.textContent = `Game over! A palavra era "${secretWord}".`;
+        messageDisplay.textContent = `Você Perdeu! A palavra era "${secretWord}".`;
         endGame();
     }
 }
